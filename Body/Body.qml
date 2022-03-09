@@ -8,7 +8,7 @@ StackLayout {
         id: usbCamera
     }
 
-//    UsbCamera {
-//        id: usbCamera
-//    }
+    HttpStream {
+        id: httpStream
+    }
 }

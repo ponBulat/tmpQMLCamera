@@ -2,8 +2,8 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>CameraToolBar.qml</file>
-        <file>Body.qml</file>
-        <file>UsbCamera.qml</file>
-        <file>httpStream.qml</file>
+        <file>Body/Body.qml</file>
+        <file>Body/HttpStream.qml</file>
+        <file>Body/UsbCamera.qml</file>
     </qresource>
 </RCC>

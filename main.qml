@@ -5,6 +5,8 @@ import QtQuick.Controls.Material
 
 import QtMultimedia
 
+import "./Body" as Body
+
 ApplicationWindow {
     width: 1000
     height: 800
@@ -14,7 +16,7 @@ ApplicationWindow {
 
     }
 
-    Body {
+    Body.Body {
 
     }
 
