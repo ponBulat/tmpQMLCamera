@@ -1,23 +1,33 @@
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Controls
 import QtQuick.Controls.Material
-
-import QtMultimedia
-
-import "./Body" as Body
 
 ApplicationWindow {
     width: 1000
-    height: 800
+    height: 600
+    visible: true
     title: qsTr("Camera demo")
 
-    header: CameraToolBar {
+    TabBar {
+        id: bar
+        width: parent.width
 
+        TabButton { text: "UsbCamera" }
+        TabButton { text: "HttpStream" }
     }
 
-    Body.Body {
+    StackLayout {
+        width: parent.width
+        y: bar.height
+        currentIndex: bar.currentIndex
 
+        UsbCamera {
+            id: usbCamera
+        }
+
+        HttpStream {
+            id: httpStream
+        }
     }
-
 }
