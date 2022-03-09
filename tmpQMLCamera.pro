@@ -1,6 +1,6 @@
 QT += quick multimedia
 
-CONFIG += c++17
+CONFIG += c++latest
 
 SOURCES += \
         main.cpp

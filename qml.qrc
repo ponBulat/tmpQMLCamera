@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>CameraToolBar.qml</file>
+        <file>Body.qml</file>
+        <file>UsbCamera.qml</file>
+        <file>httpStream.qml</file>
     </qresource>
 </RCC>

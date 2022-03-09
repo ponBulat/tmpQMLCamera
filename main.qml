@@ -1,51 +1,21 @@
 import QtQuick
-import QtQuick.Window
 import QtQuick.Controls
+import QtQuick.Layouts
 import QtQuick.Controls.Material
 
 import QtMultimedia
 
-Window {
+ApplicationWindow {
     width: 1000
     height: 800
-    visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Camera demo")
 
-    Button {
-        id: btn
-        checkable: true;
-        onClicked: {
-            if( checked ) {
-                myCamera.start();
-            } else {
-                myCamera.stop();
-            }
-        }
+    header: CameraToolBar {
+
     }
 
-    Rectangle {
-        y: btn.height
+    Body {
 
-        width: 800
-        height: 600
-
-        CaptureSession {
-            camera: Camera {
-                id: myCamera
-                cameraDevice: devices.defaultVideoInput
-            }
-            videoOutput: videoOutput
-        }
-
-        MediaDevices {
-            id: devices
-        }
-
-        VideoOutput {
-            id: videoOutput
-            anchors.fill: parent
-        }
     }
-
 
 }
