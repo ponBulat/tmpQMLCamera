@@ -14,6 +14,7 @@ ApplicationWindow {
         width: parent.width
 
         TabButton { text: "UsbCamera" }
+
         TabButton { text: "HttpStream" }
     }
 

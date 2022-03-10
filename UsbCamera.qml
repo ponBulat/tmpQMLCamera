@@ -8,6 +8,18 @@ Rectangle {
     width: 640
     height: 480
 
+    Column {
+        Button {
+            text: "start"
+            onClicked: myCamera.start()
+        }
+
+        Button {
+            text: "stop"
+            onClicked: myCamera.stop()
+        }
+    }
+
     CaptureSession {
         camera: Camera {
             id: myCamera
