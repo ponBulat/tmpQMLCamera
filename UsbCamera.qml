@@ -5,8 +5,8 @@ import QtQuick.Controls
 import QtMultimedia
 
 Rectangle {
-    width: 640
-    height: 480
+    width: 360
+    height: 240
 
     Column {
         Button {
