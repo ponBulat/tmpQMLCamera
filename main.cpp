@@ -1,9 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include <mycamera.h>
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+//    MyCamera myCamera;
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
