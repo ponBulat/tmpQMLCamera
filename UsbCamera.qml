@@ -18,7 +18,7 @@ Rectangle {
 
             Button {
                 text: "stop"
-                onClicked: camera.stop()
+                onClicked: { camera.stop(); console.log( "stop" )}
             }
 
             Button {
@@ -46,14 +46,11 @@ Rectangle {
 
         CaptureSession {
             id: captureSession
-            camera: Camera {
-                id: camera
-                cameraDevice: devices.defaultVideoInput
-            }
+            camera: camera
             videoOutput: videoOutput
-            recorder: MediaRecorder {
-                id: mediaRecorder
-            }
+//            recorder: MediaRecorder {
+//                id: mediaRecorder
+//            }
         }
 
         MediaDevices {
@@ -62,14 +59,19 @@ Rectangle {
 
         VideoOutput {
             id: videoOutput            
-            transform:  [
-                Matrix4x4 {
-                  matrix: Qt.matrix4x4(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-                },
-                Translate {
-                  x: annotationHLine.width
-                }
-              ]
+//            transform:  [
+//                Matrix4x4 {
+//                  matrix: Qt.matrix4x4(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+//                },
+//                Translate {
+//                  x: annotationHLine.width
+//                }
+//              ]
+        }
+
+        Camera {
+                id: camera
+                cameraDevice: devices.defaultVideoInput
         }
 
         Component.onCompleted: {
