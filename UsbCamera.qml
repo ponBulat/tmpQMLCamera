@@ -11,37 +11,39 @@ Rectangle {
 
     Row {
         Column {
-            Button {
-                text: "start"
-                onClicked: camera.start()
-            }
+            Row {
+                Button {
+                    text: "start"
+                    onClicked: camera.start()
+                }
+                Button {
+                    text: "stop"
+                    onClicked: { camera.stop(); console.log( "stop" )}
+                }
+                Button {
+                    text: "tap"
+                    onClicked: {
 
-            Button {
-                text: "stop"
-                onClicked: { camera.stop(); console.log( "stop" )}
-            }
+                        console.log( "zoomFactor", camera.zoomFactor )
+                        console.log( "minimumZoomFactor", camera.minimumZoomFactor )
+                        console.log( "maximumZoomFactor", camera.maximumZoomFactor )
 
-            Button {
-                text: "tap"
-                onClicked: {
-                    console.log( 'tap' )
+    //                    console.log( 'tap' )
 
-//                    console.log( JSON.stringify( camera.cameraFormat ) )
+                        console.log( JSON.stringify( camera.cameraDevice.videoFormats ) )
 
-    //                camera.cameraFormat.resolution = '640x480'
-//                    camera.cameraFormat.resolution = {"width":320,"height":240}
-//                    console.log( JSON.stringify( camera.cameraFormat ) )
-    //                mediaRecorder.quality = 0
+        //                camera.cameraFormat.resolution = '640x480'
+    //                    camera.cameraFormat.resolution = {"width":320,"height":240}
+    //                    console.log( JSON.stringify( camera.cameraFormat ) )
+        //                mediaRecorder.quality = 0
+                    }
                 }
             }
-//            Button {
-//                text: "tap"
-//                onClicked: {
-//    //                camera.cameraFormat.resolution = '640x480'
-//    //                console.log( mediaRecorder.quality )
-//    //                mediaRecorder.quality = 4
-//                }
-//            }
+
+            ComboBox {
+                id: inResolutionComboBox
+                model: getResolutions()
+            }
         }
 
         CaptureSession {
@@ -133,5 +135,38 @@ Rectangle {
 //                }
 //            }
         }
+    }
+
+//    MouseArea {
+//        anchors.fill: parent
+//        onPressed: {
+
+//            console.log( "onPressed" )
+//        }
+//    }
+
+
+
+    function getResolutions( ) {
+
+        const resolutions = new Set()
+
+        for( const videoFormat of devices.defaultVideoInput.videoFormats ) {
+
+            let hz = ''
+
+            if( videoFormat.maxFrameRate % 1 )
+                hz = videoFormat.maxFrameRate.toFixed(1) //  например 7.500001907348633
+            else
+                hz = videoFormat.maxFrameRate
+
+            hz += ' Hz'
+
+            const resolution = `${ videoFormat.resolution.width }x${ videoFormat.resolution.height } ${ hz }`
+
+            resolutions.add( resolution )
+        }
+
+        return Array.from( resolutions ).sort()
     }
 }
